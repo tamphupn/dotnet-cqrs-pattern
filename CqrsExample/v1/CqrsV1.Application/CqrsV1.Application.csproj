@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ApplicationServices\" />
+    <None Remove="ApplicationServices\V1\" />
+    <None Remove="ApplicationServices\V1\OrderAppService\" />
+    <None Remove="ApplicationServices\V1\OrderAppService\Commands\" />
+    <None Remove="ApplicationServices\V1\OrderAppService\Queries\" />
+    <None Remove="ApplicationServices\V1\OrderAppService\Validations\" />
+    <None Remove="ApplicationServices\V1\OrderAppService\EventHandlers\" />
+    <None Remove="BuildingBlocks\" />
+    <None Remove="BuildingBlocks\DbContext\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationServices\" />
+    <Folder Include="ApplicationServices\V1\" />
+    <Folder Include="ApplicationServices\V1\OrderAppService\" />
+    <Folder Include="ApplicationServices\V1\OrderAppService\Commands\" />
+    <Folder Include="ApplicationServices\V1\OrderAppService\Queries\" />
+    <Folder Include="ApplicationServices\V1\OrderAppService\Validations\" />
+    <Folder Include="ApplicationServices\V1\OrderAppService\EventHandlers\" />
+    <Folder Include="BuildingBlocks\" />
+    <Folder Include="BuildingBlocks\DbContext\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CqrsV1.Domain\CqrsV1.Domain.csproj" />
+    <ProjectReference Include="..\CqrsV1.DomainShared\CqrsV1.DomainShared.csproj" />
+  </ItemGroup>
+</Project>
