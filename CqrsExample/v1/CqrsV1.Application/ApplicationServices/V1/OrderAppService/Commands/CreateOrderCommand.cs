@@ -21,7 +21,7 @@ namespace CqrsV1.Application.ApplicationServices.V1.OrderAppService.Commands
 
     public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, bool>
     {
-        private readonly ICqrsBaseDbContext _context;
+        private readonly ICqrsApplicationDbContext _context;
 
         public CreateOrderCommandHandler(ICqrsApplicationDbContext context)
         {
