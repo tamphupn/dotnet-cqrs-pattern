@@ -1,5 +1,6 @@
 ﻿using CqrsV1.Application.BuildingBlocks.DbContext;
 using CqrsV1.DomainShared.BuildingBlocks.CqrsCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace CqrsV1.Application.ApplicationServices.V1.OrderAppService.Queries
 {
@@ -25,7 +26,7 @@ namespace CqrsV1.Application.ApplicationServices.V1.OrderAppService.Queries
 
         public async ValueTask<OrderViewModel> Handle(GetOrderByIdQuery command, CancellationToken token)
         {
-            var order = _context.Orders.FirstOrDefault(x => x.Id == command.Id);
+            var order = await _context.Orders.FirstOrDefaultAsync(x => x.Id == command.Id, token);
             if (order == null)
             {
                 throw new Exception("Not Found");
