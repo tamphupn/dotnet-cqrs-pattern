@@ -6,9 +6,10 @@ namespace CqrsV1.API.Controllers
 {
     public partial class OrderController: ControllerBase
     {
+		[HttpGet]
 		public async Task<ActionResult<OrderViewModel>> GetByIdAsync(int id)
 		{
-			var order = await GetContext.SendCommand<GetOrderByIdQuery, OrderViewModel>(new GetOrderByIdQuery(id));
+			var order = await GetContext.SendQuery<GetOrderByIdQuery, OrderViewModel>(new GetOrderByIdQuery(id));
 			if (order == null)
 			{
 				return NotFound();

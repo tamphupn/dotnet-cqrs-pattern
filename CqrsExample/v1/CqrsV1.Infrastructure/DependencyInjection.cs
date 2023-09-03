@@ -1,4 +1,7 @@
-﻿using CqrsV1.Infrastructure.Persistence;
+﻿using CqrsV1.Application.ApplicationServices.V1.OrderAppService.Queries;
+using CqrsV1.Application.BuildingBlocks.DbContext;
+using CqrsV1.DomainShared.BuildingBlocks.CqrsCore;
+using CqrsV1.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,9 +22,15 @@ namespace CqrsV1.Infrastructure
 
             services.AddDbContext<CqrsReadonlyDbContext>(options =>
             {
-                options.UseNpgsql(connectionString);
+                options.UseNpgsql(readonlyConnectionString);
             });
 
+            services.AddTransient<ICqrsApplicationDbContext>(provider => provider.GetService<CqrsApplicationDbContext>() ?? throw new ArgumentNullException(nameof(CqrsApplicationDbContext)));
+
+            services.AddTransient<ICqrsReadonlyDbContext>(provider => provider.GetService<CqrsReadonlyDbContext>() ?? throw new ArgumentNullException(nameof(CqrsReadonlyDbContext)));
+
+            services.AddQueryHandler<GetOrderByIdQuery, OrderViewModel, GetOrderByIdQueryHandler>();
+                
             return services;
         }
     }

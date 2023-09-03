@@ -6,7 +6,8 @@ namespace CqrsV1.API.Controllers
 {
     public partial class OrderController: ControllerBase
     {
-		public async Task<ActionResult<bool>> CreateAsync([FromBody] CreateOrderCommand command)
+        [HttpPost]
+        public async Task<ActionResult<bool>> CreateAsync([FromBody] CreateOrderCommand command)
 		{
 			var isSuccess = await GetContext.SendCommand<CreateOrderCommand, bool>(command);
 

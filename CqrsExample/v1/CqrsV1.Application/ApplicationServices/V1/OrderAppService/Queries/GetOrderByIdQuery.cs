@@ -15,11 +15,11 @@ namespace CqrsV1.Application.ApplicationServices.V1.OrderAppService.Queries
         public int Id { get; }
     }
 
-    public class DeleteOrderCommandHandler : IQueryHandler<GetOrderByIdQuery, OrderViewModel>
+    public class GetOrderByIdQueryHandler : IQueryHandler<GetOrderByIdQuery, OrderViewModel>
     {
         private readonly ICqrsApplicationDbContext _context;
 
-        public DeleteOrderCommandHandler(ICqrsReadonlyDbContext context)
+        public GetOrderByIdQueryHandler(ICqrsReadonlyDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
