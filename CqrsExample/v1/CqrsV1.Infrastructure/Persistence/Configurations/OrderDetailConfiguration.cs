@@ -11,10 +11,6 @@ namespace CqrsV1.Infrastructure.Persistence.Configurations
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.Property(entity => entity.ProductName)
-                .HasMaxLength(255)
-                .IsRequired();
-
             builder.Property(entity => entity.Price)
                 .HasColumnType("DECIMAL(20,2)")
                 .IsRequired();
