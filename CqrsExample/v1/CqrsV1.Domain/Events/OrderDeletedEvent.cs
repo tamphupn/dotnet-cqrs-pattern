@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CqrsV1.Application.ApplicationServices.V1.OrderAppService.EventHandlers
+namespace CqrsV1.Domain.Events
 {
 	public class OrderDeletedEvent
 	{
